@@ -34,4 +34,3 @@ async function getNasaImage() {
 
 // Event listener to trigger image update
 button.addEventListener("click", getNasaImage);
-body.addEventListener("load", getNasaImage);
