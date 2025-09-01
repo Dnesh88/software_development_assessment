@@ -1,0 +1,27 @@
+h1 {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.column {
+  float: left;
+  width: 40%;
+  padding: 20px;
+}
+
+.row {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+body,button {
+  font-family: Arial;
+  font-size: large;
+}
+
+
