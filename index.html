@@ -2,25 +2,35 @@
 
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Astronomy Picture of the Day​</title>
     <style>
       img {
         max-width: 100%;
         height: auto;
       }
-      div {
+      .main {
         text-align: center;
+      }
+      .heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centers content horizontally */
       }
     </style>
   </head>
 
-  <body>
-    <div>
+  <body onload="">
+    <div class="heading">
       <h1>Astronomy Picture of the Day</h1>
+      <img alt="image" src="jets.gif" alt="jets image" />
+    </div>
+
+    <div class="main">
       <img alt="image" id="external_image" />
 
       <p id="external_image_description"></p>
-      
+
       <button type="button" id="image_button">Next Image</button>
     </div>
     <script src="script.js"></script>
