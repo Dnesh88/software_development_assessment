@@ -13,7 +13,20 @@ const button = document.getElementById("image_button");
 // Function to get image from NASA APOD - Astronomy Picture of the Day
 async function getNasaImage() {
   try {
-    
+    // Query parameters
+    // Define the API URL
+    const API_URL = "https://api.nasa.gov/planetary/apod";
+    const API_KEY = "gNDqlB62a1CVhBH4VRrcjxOXo77gK6J6eZ6UB9hn";
+
+    // Testing code
+    //console.log(newDate);
+
+    const imageElement = document.getElementById("external_image");
+    const imageDescription = document.getElementById(
+      "external_image_description"
+    );
+    const button = document.getElementById("image_button");
+
     // Random date generator 0 to 9
     let randomYear = 2015 + Math.floor(Math.random() * 10);
 
