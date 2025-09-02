@@ -2,7 +2,7 @@
 const API_URL = "https://api.nasa.gov/planetary/apod";
 const API_KEY = "gNDqlB62a1CVhBH4VRrcjxOXo77gK6J6eZ6UB9hn";
 
-// Constants used to refence various HTML elements for modifications
+// Constants used to refence various HTML elements for modifications/event triggers
 const imageElement = document.getElementById("external_image");
 const imageDate = document.getElementById("external_image_date");
 const imageDescription = document.getElementById("external_image_description");
@@ -10,13 +10,13 @@ const imageButton = document.getElementById("image_button");
 const searchDate = document.getElementById("search_date");
 const searchButton = document.getElementById("search_button");
 
-// Generate a random date which determies the next random image to display
-// Random year (2015 to 2024) and date generator (0 to 9)
+// Generate random date
 function getRandomDate() {
-  let randomYear = 2015 + Math.floor(Math.random() * 10);
-  let tempDate = Math.floor(Math.random() * 10);
-  let newDate = randomYear + "-06-1" + tempDate;
-  getNasaImage(newDate);
+  let fromDate = (new Date(2015,0,1)).getTime();  // Start date 1 Jan 2015 (first day this API service went live). .getTime() method returns date in milliseconds
+  let currentDate = (new Date()).getTime();       // Today's date
+  let newDate = new Date(fromDate + Math.random() * (currentDate - fromDate));   // Selecting a random date
+  let formattedDate = newDate.toISOString().split('T')[0];    // Modifying the date to format (YYYY-MM-DD)
+  getNasaImage(formattedDate);    
 }
 
 // Use user supplied date to lookup specific image published on that date
@@ -25,7 +25,7 @@ function userSearchDate() {
   getNasaImage(newDate);
 }
 
-// Function to get image from NASA APOD - Astronomy Picture of the Day
+// Get image from NASA APOD - Astronomy Picture of the Day
 async function getNasaImage(newDate) {
   try {
 
@@ -37,7 +37,6 @@ async function getNasaImage(newDate) {
     const sourceImageUrl = data["url"]; // Get the URL of the image
     const sourceImageExplanation = data["explanation"]; // Get the image description text
     const sourceImageDate = data["date"]; // Get the image date
-
     imageElement.src = sourceImageUrl; // Update the src of the image element
     imageDescription.textContent = "Explanation: " + sourceImageExplanation; // Update the content of the paragraph element
     imageDate.textContent = "Date: " + sourceImageDate; // Update date
