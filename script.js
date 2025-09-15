@@ -1,6 +1,5 @@
 // API details
 const API_URL = "https://api.nasa.gov/planetary/apod";
-const API_KEY = "gNDqlB62a1CVhBH4VRrcjxOXo77gK6J6eZ6UB9hn";
 
 // Constants used to refence various HTML elements for modifications/event triggers
 const imageElement = document.getElementById("external_image");
